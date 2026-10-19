@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiệm Hoa 20/10 🌸</title>
+    <title>Tiệm Hoa Tặng Cậu 🌸</title>
     <!-- Phông chữ nữ tính -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Dancing+Script:wght@600;700&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
     
@@ -546,18 +546,26 @@
             overflow-wrap: break-word;
         }
 
+        /* HIỆU ỨNG CHỮ RƠI CHẬM MƯỢT MÀ VÀ TINH TẾ */
         .falling-word {
             display: inline-block;
             opacity: 0;
-            transform: translateY(-12px) scale(1.1);
-            animation: wordFall 0.35s forwards ease-out;
+            transform: translateY(-20px);
+            filter: blur(4px);
+            animation: smoothWordFall 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             margin-right: 4px;
         }
 
-        @keyframes wordFall {
-            to {
+        @keyframes smoothWordFall {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+                filter: blur(4px);
+            }
+            100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
+                filter: blur(0px);
             }
         }
 
@@ -569,7 +577,7 @@
             font-weight: bold;
             text-align: center !important;
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 1.5s ease;
         }
 
         .signature-text.show {
@@ -619,8 +627,8 @@
             <div class="shop-roof-cute"><div class="scallop"></div></div>
             <div class="shop-wall-cute">
                 <div class="shop-sign-cute">
-                    <span class="sign-title">🌸 TIỆM HOA BẠN THÂN 🌸</span>
-                    <span class="sign-sub">FLOWER SHOP FOR MY BESTIE</span>
+                    <span class="sign-title">🌸 TIỆM HOA GỬI CẬU 🌸</span>
+                    <span class="sign-sub">FLOWER SHOP FOR YOU</span>
                 </div>
                 <div class="shop-front-details">
                     <div class="cute-window"><div class="glass-shine"></div><span class="flowers-in-window">🌺🌼🌸</span></div>
@@ -629,7 +637,7 @@
             </div>
             <div class="flower-garden-front"><span>🪴</span><span>🌻</span><span>🌸</span><span>🌷</span><span>🪴</span></div>
         </div>
-        <p class="click-hint">"Chạm vào tiệm hoa để tự tay bó hoa tặng cậu nhé!" ✨</p>
+        <p class="click-hint">"Chạm vào tiệm hoa để tự tay bó hoa tặng chị nhé!" ✨</p>
     </div>
 
     <!-- BƯỚC 2: Chọn hoa cắm thành Bó -->
@@ -682,12 +690,12 @@
     <!-- BƯỚC 3: Màn hình Thư Chúc Mừng -->
     <div id="step-3" class="screen">
         <div class="letter-card-pure">
-            <h3>Gửi Cậu,</h3>
+            <h3>Gửi Chị,</h3>
             <span class="sub-date">✨ Chúc mừng ngày Phụ nữ Việt Nam 20/10 ✨</span>
             
             <div class="animated-text-content" id="letter-text-box"></div>
             
-            <p class="signature-text" id="signature-text">Thân gửi từ người bạn của cậu 💖</p>
+            <p class="signature-text" id="signature-text"> Gửi từ một người bạn của Duyên 💖</p>
         </div>
         <button class="replay-btn" onclick="location.reload()">🔄 Cắm lại bó hoa khác</button>
     </div>
@@ -696,9 +704,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const letterParagraphs = [
-                "Nhân ngày 20/10, tớ muốn gửi tặng cậu bó hoa nhỏ đáng yêu do chính tay tớ sắp xếp này! Mỗi bông hoa tượng trưng cho những điều tốt đẹp nhất tớ muốn dành cho cậu: luôn bình an, tươi vui và rạng rỡ mỗi ngày.",
-                "Cảm ơn cậu vì đã luôn là một cô bạn dễ thương, tuyệt vời và mang đến nhiều năng lượng tích cực cho tớ cũng như mọi người xung quanh.",
-                "Chúc cậu luôn tự tin đuổi theo những ước mơ của mình, luôn được cưng chiều và có một ngày lễ ngập tràn hạnh phúc nhé!"
+                "Nghĩ lại mới thấy duyên thật đấy chị nhỉ, từ hồi tình cờ thi TN THPT chung, tưởng đâu mỗi đứa một ngã rẽ, ai ngờ bây giờ lại tình cờ gặp lại nhau ngay dưới mái trường đại học này.",
+                "Dù thời gian mình quen biết chưa lâu và mới chỉ thân nhau gần đây thôi, nhưng em thực sự rất thoải mái khi trò chuyện cùng chị.",
+                "Nhân ngày 20/10, em tự tay cắm bó hoa nhỏ này để gửi tặng chị. Chúc chị luôn xinh đẹp, nhiều năng lượng, lúc nào cũng rạng rỡ và gặp nhiều may mắn trên hành trình đại học sắp tới nhé!"
             ];
 
             // Hiệu ứng bong bóng nền
@@ -778,7 +786,6 @@
                         appendFlowerStemToContainer(bouquetSlot, flowerIcon, selectedFlowers.length - 1);
                         countDisplay.innerText = selectedFlowers.length;
 
-                        // KHI CẮM ĐỦ 5 BÔNG: Phát nhạc + Sang màn hình Thư
                         if (selectedFlowers.length === 5) {
                             playAudioSafely(); 
 
@@ -794,20 +801,16 @@
                 });
             });
 
-            // Hàm phát nhạc an toàn vượt qua mọi bộ lọc chặn của trình duyệt nhờ hành vi click vừa xong
             function playAudioSafely() {
                 const audio = document.getElementById("bg-music");
                 if (audio) {
                     audio.currentTime = 0;
-                    audio.play().then(() => {
-                        console.log("Nhạc đã phát thành công!");
-                    }).catch(error => {
+                    audio.play().catch(error => {
                         console.log("Trình duyệt chặn phát âm thanh tự động:", error);
                     });
                 }
             }
 
-            // Hiệu ứng hoa rơi
             function startFallingFlowers() {
                 const fallingContainer = document.getElementById("falling-flowers-container");
                 fallingContainer.style.display = "block";
@@ -827,7 +830,7 @@
                 }, 350);
             }
 
-            // Hiệu ứng chữ rơi theo từng từ mượt mà
+            // Hiệu ứng chữ rơi chậm rãi, mượt mà từng từ
             function startFallingTextEffect() {
                 const textBox = document.getElementById("letter-text-box");
                 textBox.innerHTML = "";
@@ -842,14 +845,15 @@
                         let wordSpan = document.createElement("span");
                         wordSpan.classList.add("falling-word");
                         wordSpan.innerText = word + " ";
-                        wordSpan.style.animationDelay = (pIdx * 1.5 + wIdx * 0.05) + "s";
+                        // Tăng độ trễ giữa các từ để chữ rơi thong thả, nhẹ nhàng hơn
+                        wordSpan.style.animationDelay = (pIdx * 2.2 + wIdx * 0.08) + "s";
                         pElem.appendChild(wordSpan);
                     });
                 });
 
                 setTimeout(() => {
                     document.getElementById("signature-text").classList.add("show");
-                }, 6500);
+                }, 9000);
             }
         });
     </script>
